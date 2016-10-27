@@ -47,7 +47,7 @@ public class UriUtilsTest {
     EasyMock.expect(uriInfo.getAbsolutePathBuilder())
         .andReturn(UriBuilder.fromUri("http://foo.com"));
     EasyMock.replay(uriInfo);
-    assertEquals("http://foo.com", UriUtils.absoluteUriBuilder(config, uriInfo).build().toString());
+    assertEquals("http://foo.com:8082", UriUtils.absoluteUriBuilder(config, uriInfo).build().toString());
     EasyMock.verify(uriInfo);
   }
 
@@ -60,7 +60,7 @@ public class UriUtilsTest {
         .andReturn(UriBuilder.fromUri("http://foo.com"));
     EasyMock.expect(uriInfo.getAbsolutePath()).andReturn(URI.create("http://foo.com"));
     EasyMock.replay(uriInfo);
-    assertEquals("http://bar.net", UriUtils.absoluteUriBuilder(config, uriInfo).build().toString());
+    assertEquals("http://bar.net:8082", UriUtils.absoluteUriBuilder(config, uriInfo).build().toString());
     EasyMock.verify(uriInfo);
   }
 

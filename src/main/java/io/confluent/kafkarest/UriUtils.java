@@ -32,11 +32,9 @@ public class UriUtils {
       // be reset.
       URI origAbsoluteUri = uriInfo.getAbsolutePath();
       builder.scheme(origAbsoluteUri.getScheme());
-      // Only reset the port if it was set in the original URI
-      if (origAbsoluteUri.getPort() != -1) {
-        builder.port(config.getInt(KafkaRestConfig.PORT_CONFIG));
-      }
     }
+    // Always include the port
+    builder.port(config.getInt(KafkaRestConfig.PORT_CONFIG));
     return builder;
   }
 }
